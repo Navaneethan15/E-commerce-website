@@ -13,6 +13,7 @@ export default function Home() {
       <Header />
       <Routes>
         <Route path="/" element={<Dashboard />} />
+      
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout/">

@@ -24,7 +24,6 @@ export default function Product() {
   };
   return (
     <div className="card m-2">
-      {alert && <span className="alert alert-success"> Your Item added to cart</span>}
       <div className="mt-2">
         <img
           src={props.thumbnail}
@@ -50,8 +49,8 @@ export default function Product() {
               </button>
               {element?.count > 0 ? (
                 <button
-                  className="ms-3 btn btn-outline-warning"
-                  onClick={() => navigate("/cart")}
+                className="ms-3 btn btn-outline-warning"
+                onClick={() => navigate("/cart")}
                 >
                   Go to Cart
                 </button>                                                                                                                   
@@ -63,8 +62,9 @@ export default function Product() {
             </>
           ) : (
             <button className="btn btn-outline-danger">Out of stock</button>
-          )}
+            )}
         </div>
+            {alert && <span className="alert alert-success"> Your Item added to cart</span>}
       </div>
     </div>
   );

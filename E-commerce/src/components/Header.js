@@ -1,22 +1,42 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+// import { BsCart3 } from "react-icons/bs";
+// import { BsFillCartFill } from "react-icons/bs"; 
+// import { IoCartSharp } from "react-icons/io5";
+import { FaHome } from "react-icons/fa";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
 
-export default function Header() {
-    const navigate = useNavigate()
+export default function Header(props) {
+  const [cartItemCount, setCartItemCount] = useState(0);
+  const list = useSelector((state) => state.cart.list);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setCartItemCount(list.length);
+  }, [list]);
+
   return (
-    <div className='p-3 bg-secondary  ' >
+    <div className='tik-header'>
+      <div className='tik-logo'>
         <h3>Tik Tok Shop</h3>
-        <div className='row justify-content-center pt-2 pb-1'>
-            <div className='col-sm-12 col-md-7 col-lg-6 col-xl-5 d-flex'>
-                <button className='btn btn-success me-4' onClick={() => navigate('/')}>Home</button>
-                <input
-                className='form-control'
-                type='search'
-                placeholder='Seach...'
-                />
-                <button className='btn btn-success ms-3' onClick={() => navigate('/cart')}>Cart</button>
-            </div>
-        </div>
-    </div>  
-  )
+      </div>
+      <button className='btn me-4 ' onClick={() => navigate('/')}>
+            <FaHome  size={25}
+            />
+          </button>
+      <div className='tik-search'>
+        <input className='form-control' type='search' placeholder='Search...' />
+        <button className='search-button'>
+          <FaSearch  />
+        </button>
+      </div>
+      <div className='tik-cart'>
+        <button className='cart-button' onClick={() => navigate('/cart')}>
+          <FaShoppingCart />
+          <span className="badge">{cartItemCount}</span>
+        </button>
+      </div>
+    </div>
+  );
 }

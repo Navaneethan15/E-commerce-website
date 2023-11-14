@@ -1,4 +1,7 @@
 import React from "react";
+import { FaCartPlus } from "react-icons/fa";
+import { BsFillCartDashFill } from "react-icons/bs";
+import { BsCartX } from "react-icons/bs";
 
 export default function ProductListItem(props) {
   return (
@@ -16,10 +19,10 @@ export default function ProductListItem(props) {
       {/* <h6 className="mt-2 me-4">Discount: {props.discountPercentage}%</h6>
       <h6 className="mt-2 me-4">Rating: {props.rating}</h6> */}
 
-      <button className="btn btn-danger ms-3" onClick={props.decrementItem}>-</button>
+      <button className="btn btn-danger ms-3" onClick={props.decrementItem}> <BsFillCartDashFill /> </button>
       <span className="ms-3">Quantity {props.count}</span>
-      <button className="btn btn-success ms-3" onClick={props.incrementItem}>+</button>
-      <button className="btn btn-danger ms-3" onClick={props.removeItem}>Remove</button>
+      <button className="btn btn-success ms-3" onClick={props.incrementItem}><FaCartPlus /></button>
+      <button className="btn btn-danger ms-3" onClick={props.removeItem}>Remove <BsCartX /> </button>
     </div>
   );
 }
